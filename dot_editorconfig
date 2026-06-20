@@ -1,0 +1,30 @@
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+
+[*.{sh,bash,zsh,fish}]
+indent_size = 4
+
+[*.{go,mod}]
+indent_style = tab
+indent_size = 4
+
+[Makefile*]
+indent_style = tab
+indent_size = 4
+
+[*.{mk,am,am.*}]
+indent_style = tab
+indent_size = 4
+
+[.gitconfig]
+indent_style = tab
+indent_size = 4
+
+[*.lua]
+indent_size = 4

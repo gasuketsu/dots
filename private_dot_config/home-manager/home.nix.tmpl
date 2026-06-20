@@ -1,0 +1,47 @@
+{ config, pkgs, ... }:
+
+{
+  home.username = "{{ .chezmoi.username }}"
+  home.homeDirectory = "{{ .chezmoi.homeDir }}"
+
+  home.stateVersion = "25.11";
+
+  home.packages = [
+    pkgs.ast-grep
+    pkgs.bat
+    pkgs.biome
+    pkgs.bun
+    pkgs.clang-tools
+    pkgs.delta
+    pkgs.direnv
+    pkgs.fd
+    pkgs.fzf-git-sh
+    pkgs.fzf
+    pkgs.ghq
+    pkgs.go
+    pkgs.httpie
+    pkgs.jless
+    pkgs.jq
+    pkgs.lazygit
+    pkgs.luajitPackages.tree-sitter-cli
+    pkgs.neovim
+    pkgs.ninja
+    pkgs.nodejs
+    pkgs.plocate
+    pkgs.python3
+    pkgs.ripgrep
+    pkgs.rustfmt
+    pkgs.scc
+    pkgs.sheldon
+    pkgs.shellcheck
+    pkgs.shfmt
+    pkgs.starship
+    pkgs.uv
+    pkgs.viu
+    pkgs.yamlfmt
+    pkgs.zellij
+    pkgs.zoxide
+  ];
+
+  programs.home-manager.enable = true;
+}

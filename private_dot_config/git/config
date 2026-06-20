@@ -1,0 +1,33 @@
+[init]
+	defaultBranch = main
+[push]
+	default = simple
+[pull]
+	rebase = false
+[core]
+	pager = delta
+	quotepath = false
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	true-color = always
+	navigate = true
+	line-numbers = true
+	side-by-side = true
+	syntax-theme = kanagawa
+	line-numbers-plus-style = "#76946A"
+	line-numbers-minus-style = "#C34043"
+	plus-style = "syntax #2B3328"
+	minus-style = "syntax #43242B"
+	plus-emph-style = "syntax #4D5B47"
+	minus-emph-style = "syntax #743E4A"
+[alias]
+	glog = log --graph --decorate --date=iso
+	root = rev-parse --show-toplevel
+[mergetool]
+	prompt = false
+[mergetool "diffview"]
+	cmd = nvim -f -c \"DiffviewOpen\"
+[merge]
+	conflictstyle = zdiff3
+	tool = diffview

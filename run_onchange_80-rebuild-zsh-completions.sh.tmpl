@@ -1,0 +1,8 @@
+#! /usr/bin/env bash
+
+# chezmoi version: {{ .chezmoi.version.version }}
+# devbox version: {{ output "devbox" "version" }}
+
+mkdir -p "$HOME/.config/zsh/completions"
+chezmoi completion zsh --output="$HOME/.config/zsh/completions/_chezmoi"
+devbox completion zsh >"$HOME/.config/zsh/completions/_devbox"

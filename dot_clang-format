@@ -1,0 +1,16 @@
+BasedOnStyle: Google
+ColumnLimit: 100
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+PointerAlignment: Left
+ReferenceAlignment: Left
+MaxEmptyLinesToKeep: 2
+BinPackParameters: OnePerLine
+AccessModifierOffset: -4
+IndentAccessModifiers: false
+NamespaceIndentation: None
+---
+Language: Cpp
+Standard: c++20
+---

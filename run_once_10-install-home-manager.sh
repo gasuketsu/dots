@@ -1,7 +1,9 @@
 #! /usr/bin/env bash
 
-# make sure nix-related envvar is applied.
-. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+if ! command -v home-manager >/dev/null 2>&1; then
+    # make sure nix-related envvar is applied.
+    . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 
-nix run github:nix-community/home-manager -- switch --flake ~/.config/home-manager
-home-manager switch
+    nix run github:nix-community/home-manager -- switch --flake ~/.config/home-manager
+    home-manager switch
+fi

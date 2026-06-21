@@ -1,4 +1,4 @@
-# dotfiles
+# dots
 
 Manages dotfiles and tools with chezmoi + home-manager + devenv
 

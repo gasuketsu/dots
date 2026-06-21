@@ -1,20 +1,24 @@
 #! /usr/bin/env bash
 
-if ! command -v nix >/dev/null 2>&1; then
-    args=("--no-confirm")
+if command -v nix >/dev/null 2>&1; then
+    echo "nix is already installed"
+    exit 0
+fi
+
+args=("--no-confirm")
 
 {{- if (eq .chezmoi.os "linux") }}
 {{-   if and (index .chezmoi.osRelease "idLike") (contains "suse" .chezmoi.osRelease.idLike) }}
-    args+=("--ssl-cert-file /etc/ssl/ca-bundle.pem")
+args+=("--ssl-cert-file /etc/ssl/ca-bundle.pem")
 {{-   end }}
 {{- end }}
-    curl -fsSL https://install.determinate.systems/nix | sh -s -- install ${args[@]}
 
-    # Add susbtituters
-    . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+curl -fsSL https://install.determinate.systems/nix | sh -s -- install ${args[@]}
 
-    echo "trusted-users = root {{ .chezmoi.username }}" | sudo tee -a /etc/nix/nix.custom.conf && sudo systemctl restart nix-daemon
-    nix profile add nixpkgs#cachix
-    cachix use devenv
-    cachix use nix-community
-fi
+# Add susbtituters
+. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+
+echo "trusted-users = root {{ .chezmoi.username }}" | sudo tee -a /etc/nix/nix.custom.conf && sudo systemctl restart nix-daemon
+nix profile add nixpkgs#cachix
+cachix use devenv
+cachix use nix-community

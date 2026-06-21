@@ -2,6 +2,8 @@
 
 # home.nix hash: {{ include "private_dot_config/home-manager/home.nix.tmpl" | sha256sum }}
 
+echo "performing home-manager switch ..."
+
 if [ -z "${__ETC_PROFILE_NIX_SOURCED}" ]; then
     . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 fi

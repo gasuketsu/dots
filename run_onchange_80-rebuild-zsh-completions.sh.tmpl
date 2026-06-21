@@ -2,5 +2,9 @@
 
 # chezmoi version: {{ .chezmoi.version.version }}
 
+if [ -z "${__ETC_PROFILE_NIX_SOURCED}" ]; then
+    . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+fi
+
 mkdir -p "$HOME/.config/zsh/completions"
 chezmoi completion zsh --output="$HOME/.config/zsh/completions/_chezmoi"

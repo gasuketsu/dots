@@ -47,3 +47,25 @@ chezmoi apply
 > - [Determinate Nix](https://determinate.systems/nix/)
 > - [home-manager](https://github.com/nix-community/home-manager)
 > - [devenv](https://github.com/cachix/devenv)
+
+## Keep it up-to-date and clean
+
+### upgrade profile
+
+```sh
+nix profile upgrade --all
+```
+
+### update tools managed by home-manager
+
+```sh
+nix flake update --flake ~/.config/home-manager
+home-manager switch
+```
+
+### wipe history and perform garbage collection
+
+```sh
+nix profile wipe-history
+nix store gc
+```

@@ -4,7 +4,7 @@
   home.username = "{{ .chezmoi.username }}";
   home.homeDirectory = "{{ .chezmoi.homeDir }}";
 
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 
   home.packages = [
     pkgs.ast-grep
@@ -44,4 +44,10 @@
   ];
 
   programs.home-manager.enable = true;
+
+  nix.gc = {
+    automatic = true;
+      dates = "daily";
+      options = "--delete-older-than 7d";
+  };
 }

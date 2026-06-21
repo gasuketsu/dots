@@ -1,0 +1,12 @@
+#! /usr/bin/env bash
+
+# home.nix hash: {{ include "private_dot_config/home-manager/home.nix.tmpl" | sha256sum }}
+
+if [ -z "${__ETC_PROFILE_NIX_SOURCED}" ]; then
+    . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+fi
+
+home-manager switch
+
+home-manager expire-generations "-7 days"
+nix store gc

@@ -13,7 +13,7 @@ if ! command -v nix >/dev/null 2>&1; then
     # Add susbtituters
     . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 
-    echo "trusted-users = root {{ .chezmoi.username }}" | sudo tee -a /etc/nix/nix.conf && sudo systemctl restart nix-daemon
+    echo "trusted-users = root {{ .chezmoi.username }}" | sudo tee -a /etc/nix/nix.custom.conf && sudo systemctl restart nix-daemon
     nix profile add nixpkgs#cachix
     cachix use devenv
     cachix use nix-community

@@ -31,6 +31,7 @@ return {
                     "markdown",
                     "markdown_inline",
                     "meson",
+                    "nix",
                     "proto",
                     "python",
                     "regex",

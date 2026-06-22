@@ -12,4 +12,3 @@ if [ -z "${__ETC_PROFILE_NIX_SOURCED}" ]; then
 fi
 
 nix run github:nix-community/home-manager -- switch --flake ~/.config/home-manager
-home-manager switch

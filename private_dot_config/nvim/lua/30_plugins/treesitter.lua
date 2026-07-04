@@ -24,6 +24,7 @@ return {
                     "html",
                     "java",
                     "javascript",
+                    "jjdescription",
                     "json",
                     "kotlin",
                     "lua",

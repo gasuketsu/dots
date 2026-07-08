@@ -2,12 +2,22 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         config = function()
+            local jj = require("utils.jj")
             local get_color = require("lualine.utils.utils").extract_highlight_colors
 
             require("lualine").setup({
                 sections = {
                     lualine_b = {
                         { "branch" },
+                        {
+                            -- minimum jujutsu status
+                            function()
+                                return jj.status()
+                            end,
+                            cond = function()
+                                return jj.status() ~= ""
+                            end,
+                        },
                         {
                             "diff",
                             colored = true,

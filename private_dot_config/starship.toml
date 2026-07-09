@@ -13,13 +13,18 @@ format = "[$hostname]($style) "
 disabled = true
 
 [git_branch]
-format = "[$symbol$branch]($style) "
+disabled = true
 
 [git_commit]
-tag_disabled = false
+disabled = true
 
 [package]
 disabled = true
+
+[custom.jj]
+when = "jj-starship detect"
+shell = ["jj-starship"]
+format = "$output "
 
 # per-language configuration
 [cmake]

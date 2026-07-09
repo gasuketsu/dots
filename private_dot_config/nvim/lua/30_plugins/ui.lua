@@ -158,4 +158,8 @@ return {
             require("trouble").setup()
         end,
     },
+    -- winbar
+    {
+        "Bekaboo/dropbar.nvim",
+    },
 }

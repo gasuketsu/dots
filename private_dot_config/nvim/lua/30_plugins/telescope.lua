@@ -22,6 +22,7 @@ return {
                 },
             })
             require("telescope").load_extension("ghq")
+            require("telescope").load_extension("aerial")
         end,
     },
 }

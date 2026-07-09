@@ -1,16 +1,24 @@
 return {
+    -- copilot
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require("copilot").setup({
+                suggestion = { enabled = false },
+                panel = { enabled = false },
+            })
+        end,
+    },
+    -- snippets
+    {
+        "rafamadriz/friendly-snippets",
+    },
+    -- completion engine
     {
         "saghen/blink.cmp",
         dependencies = {
-            {
-                "zbirenbaum/copilot.lua",
-                config = function()
-                    require("copilot").setup({
-                        suggestion = { enabled = false },
-                        panel = { enabled = false },
-                    })
-                end,
-            },
             "giuxtaposition/blink-cmp-copilot",
         },
         version = "*",
@@ -155,6 +163,14 @@ return {
                             end
                             return items
                         end,
+                    },
+                    snippets = {
+                        opts = {
+                            friendly_snippets = true,
+                            extended_filetypes = {
+                                jjdescription = { "gitcommit" },
+                            },
+                        },
                     },
                 },
             },

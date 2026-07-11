@@ -1,6 +1,6 @@
 # dots
 
-Manages dotfiles and tools with chezmoi + home-manager + devenv
+Manages dotfiles and tools with chezmoi + home-manager
 
 ## Prerequisites
 
@@ -31,7 +31,7 @@ Also, [chezmoi](https://www.chezmoi.io/) must be installed into your host.
 sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin
 ```
 
-## Steps to deploy
+## Steps to apply
 
 ```sh
 chezmoi init gasuketsu/dots
@@ -46,7 +46,8 @@ chezmoi apply
 >
 > - [Determinate Nix](https://determinate.systems/nix/)
 > - [home-manager](https://github.com/nix-community/home-manager)
-> - [devenv](https://github.com/cachix/devenv)
+>
+> See [home.nix.tmpl](https://github.com/gasuketsu/dots/blob/main/private_dot_config/home-manager/home.nix.tmpl) for packages managed by home-manager
 
 ## Keep it up-to-date and clean
 

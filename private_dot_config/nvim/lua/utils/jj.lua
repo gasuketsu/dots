@@ -28,7 +28,7 @@ function M.update()
             return
         end
 
-        M.cache = "🥋 " .. vim.trim(obj.stdout)
+        M.cache = "󱗆 " .. vim.trim(obj.stdout)
 
         vim.schedule(function()
             vim.cmd.redrawstatus()

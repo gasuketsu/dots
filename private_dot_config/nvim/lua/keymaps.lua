@@ -1,6 +1,7 @@
 local conform = require("conform")
 local neotest = require("neotest")
 local hc = require("nvim-highlight-colors")
+local notify = require("mini.notify")
 
 -- normal mode keymaps with <leader>
 -- group "toggle"
@@ -33,7 +34,7 @@ vim.keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>", { desc = "Di
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Files" })
 vim.keymap.set("n", "<leader>fg", "<cmd>Telescope git_files<cr>", { desc = "Git files" })
 vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Help tags" })
-vim.keymap.set("n", "<leader>fn", "<cmd>Telescope noice<cr>", { desc = "Noice message history" })
+vim.keymap.set("n", "<leader>fn", notify.show_history, { desc = "Noice message history" })
 vim.keymap.set("n", "<leader>fp", "<cmd>Telescope project<cr>", { desc = "Project" })
 vim.keymap.set("n", "<leader>fr", "<cmd>Telescope ghq<cr>", { desc = "ghq repository" })
 vim.keymap.set("n", "<leader>fs", "<cmd>Telescope aerial<cr>", { desc = "Symbol in this buffer" })

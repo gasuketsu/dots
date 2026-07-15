@@ -46,6 +46,7 @@ return {
                     "pyrefly",
                     "rust_analyzer",
                     "svelte",
+                    "tombi",
                     "ts_ls",
                     "yamlls",
                 },

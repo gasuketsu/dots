@@ -1,0 +1,11 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[ui]
+diff-formatter = "delta"
+
+[merge-tools.delta]
+diff-args = ["--side-by-side", "$left", "$right", "--width=$width"]
+diff-expected-exit-codes = [0,1]
+
+[aliases]
+diffnav = ["diff", "--config=ui.diff-formatter=':git'", "--config=ui.pager='diffnav'"]

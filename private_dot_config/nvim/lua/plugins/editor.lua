@@ -20,6 +20,7 @@ return {
                     ruby = { "rubyfmt" },
                     rust = { "rustfmt" },
                     sh = { "shfmt" },
+                    toml = { "tombi" },
                     typescript = { "biome" },
                     typescriptreact = { "biome" },
                     yaml = { "yamlfmt" },

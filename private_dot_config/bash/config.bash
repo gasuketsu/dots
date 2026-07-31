@@ -1,6 +1,9 @@
 if [ -f ~/.environment ]; then
     export $(envsubst <~/.environment)
 fi
+if [ -f ~/.environment.local ]; then
+    export $(envsubst <~/.environment.local)
+fi
 
 export PIPENV_VENV_IN_PROJECT=1
 export FZF_DEFAULT_OPTS_FILE=~/.config/fzf/config

@@ -6,8 +6,8 @@ LIBVA_DRIVER_NAME=d3d12
 EDITOR=nvim
 BUN_INSTALL_BIN=$HOME/.local/bin
 {{ end -}}
-{{- if (eq .chezmoi.os "linux") }}
-{{-   if and (index .chezmoi.osRelease "idLike") (contains "suse" .chezmoi.osRelease.idLike) }}
+{{ if (eq .chezmoi.os "linux") -}}
+{{   if and (index .chezmoi.osRelease "idLike") (contains "suse" .chezmoi.osRelease.idLike) -}}
 NODE_EXTRA_CA_CERTS=/etc/ssl/ca-bundle.pem
-{{-   end }}
-{{- end }}
+{{   end -}}
+{{ end -}}

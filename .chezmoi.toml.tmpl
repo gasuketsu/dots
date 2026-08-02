@@ -1,2 +1,9 @@
+{{- $isSUSE := false -}}
+{{- if eq .chezmoi.os "linux" -}}
+{{-   $isSUSE = (index .chezmoi.osRelease "idLike" | contains "suse") -}}
+{{- end -}}
+[data]
+isSUSE = {{ $isSUSE }}
+
 [diff]
     exclude = ["scripts"]

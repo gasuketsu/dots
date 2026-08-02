@@ -16,6 +16,7 @@ return {
                     json = { "biome" },
                     lua = { "stylua" },
                     markdown = { "prettier" },
+                    nix = { "nixfmt" },
                     python = { "ruff_format" },
                     ruby = { "rubyfmt" },
                     rust = { "rustfmt" },

@@ -20,6 +20,7 @@ return {
                     "gotests",
                     "iferr",
                     "impl",
+                    "nixfmt",
                     "prettier",
                     "rubyfmt",
                     "ruff",

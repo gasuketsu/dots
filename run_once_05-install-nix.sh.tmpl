@@ -7,9 +7,9 @@ fi
 
 args=("--no-confirm")
 
-{{- if .isSUSE -}}
+{{- if .isSUSE }}
 args+=("--ssl-cert-file /etc/ssl/ca-bundle.pem")
-{{- end -}}
+{{- end }}
 
 curl -fsSL https://install.determinate.systems/nix | sh -s -- install ${args[@]}
 

@@ -1,0 +1,6 @@
+[ui]
+merge-editor = "codediff"
+
+[merge-tools.codediff]
+program = "nvim"
+args = ["$output", "-c", "Codediff --exit-on-close merge $output"]

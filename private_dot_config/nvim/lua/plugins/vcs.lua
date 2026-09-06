@@ -1,9 +1,27 @@
 return {
-    -- Gitsigns
+    -- VCSigns
     {
-        "lewis6991/gitsigns.nvim",
+        "algmyr/vcsigns.nvim",
+        dependencies = {
+            "algmyr/vclib.nvim",
+            "lewis6991/async.nvim",
+        },
         config = function()
-            require("gitsigns").setup()
+            require("vcsigns").setup({
+                target_commit = 1,
+            })
+        end,
+    },
+    -- jj.nvim
+    {
+        "nicolasgb/jj.nvim",
+        version = "*",
+        config = function()
+            require("jj").setup({
+                diff = {
+                    backend = "codediff",
+                },
+            })
         end,
     },
     -- LazyGit
@@ -26,6 +44,11 @@ return {
         keys = {
             { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
         },
+    },
+    -- codediff
+    {
+        "esmuellert/codediff.nvim",
+        cmd = "CodeDiff",
     },
     -- diff view
     {

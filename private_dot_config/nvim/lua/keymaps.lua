@@ -13,8 +13,6 @@ vim.keymap.set("n", "<leader><space>C", "<cmd>TSContextToggle<cr>", { desc = "Tr
 vim.keymap.set("n", "<leader><space>c", hc.toggle, { desc = "Highlight colors" })
 vim.keymap.set("n", "<leader><space>e", "<cmd>Neotree toggle<cr>", { desc = "File explorer" })
 vim.keymap.set("n", "<leader><space>g", "", { desc = "Toggle/Git" })
-vim.keymap.set("n", "<leader><space>gb", "<cmd>Gitsigns toggle_current_line<cr>", { desc = "Current line blame" })
-vim.keymap.set("n", "<leader><space>gd", "<cmd>Gitsigns toggle_deleted<cr>", { desc = "Deleted" })
 vim.keymap.set("n", "<leader><space>gv", "<cmd>DiffviewToggleFiles<cr>", { desc = "DiffView file tree" })
 vim.keymap.set("n", "<leader><space>l", "<cmd>LLToggle!<cr>", { desc = "Loclist" })
 vim.keymap.set("n", "<leader><space>o", "<cmd>AerialToggle!<cr>", { desc = "Outline" })
@@ -41,18 +39,9 @@ vim.keymap.set("n", "<leader>fs", "<cmd>Telescope aerial<cr>", { desc = "Symbol 
 
 -- group "git"
 vim.keymap.set("n", "<leader>g", "", { desc = "Git" })
-vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns blame_line<cr>", { desc = "Blame current line" })
 vim.keymap.set("n", "<leader>gd", "", { desc = "Git/diff" })
-vim.keymap.set("n", "<leader>gdi", "<cmd>Gitsigns diffthis<cr>", { desc = "View diff from index" })
-vim.keymap.set("n", "<leader>gdh", "<cmd>Gitsigns diffthis HEAD<cr>", { desc = "View diff from HEAD" })
 vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", { desc = "Open LazyGit" })
 vim.keymap.set("n", "<leader>gh", "", { desc = "Git/hunk" })
-vim.keymap.set("n", "<leader>ghR", "<cmd>Gitsigns reset_buffer<cr>", { desc = "Reset hunks in buffer" })
-vim.keymap.set("n", "<leader>ghS", "<cmd>Gitsigns stage_buffer<cr>", { desc = "Stage hunks in buffer" })
-vim.keymap.set("n", "<leader>ghp", "<cmd>Gitsigns preview_hunk<cr>", { desc = "Preview hunk" })
-vim.keymap.set("n", "<leader>ghr", "<cmd>Gitsigns reset_hunk<cr>", { desc = "Reset hunk" })
-vim.keymap.set("n", "<leader>ghs", "<cmd>Gitsigns stage_hunk<cr>", { desc = "Stage hunk" })
-vim.keymap.set("n", "<leader>ghu", "<cmd>Gitsigns undo_stage_hunk<cr>", { desc = "Undo last stage" })
 vim.keymap.set("n", "<leader>gv", "", { desc = "Git/DiffView" })
 vim.keymap.set("n", "<leader>gv<space>", "<cmd>DiffviewToggleFiles<cr>", { desc = "Toggle DiffView" })
 vim.keymap.set("n", "<leader>gvc", "<cmd>DiffviewClose<cr>", { desc = "Close DiffView" })
@@ -107,6 +96,15 @@ vim.keymap.set(
     { desc = "LSP defs/refs/..." }
 )
 
+-- group "VCSigns"
+vim.keymap.set("n", "<leader>v", "", { desc = "VCSigns" })
+vim.keymap.set("n", "<leader>vd", function()
+    require("vcsigns.actions").diffview(0)
+end, { desc = "Open native side-by-side diff view" })
+vim.keymap.set("n", "<leader>vu", function()
+    require("vcsigns.actions").hunk_undo(0)
+end, { desc = "Undo hunks under cursor" })
+
 -- normal mode keymaps without <leader>
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Display hover info" })
 vim.keymap.set("n", "T", neotest.output.open, { desc = "Display output of test" })
@@ -119,7 +117,12 @@ vim.keymap.set("n", "gh", vim.lsp.buf.signature_help, { desc = "Go to signature 
 
 -- group "prev"
 vim.keymap.set("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev Buffer" })
-vim.keymap.set("n", "[c", "<cmd>Gitsign prev_hunk<cr>", { desc = "Prev Git hunk" })
+vim.keymap.set("n", "[c", function()
+    require("vcsigns.actions").hunc_prev(0, vim.v.count1)
+end, { desc = "Go to previous hunk" })
+vim.keymap.set("n", "[C", function()
+    require("vcsigns.actions").hunc_prev(0, 9999)
+end, { desc = "Go to first hunk" })
 vim.keymap.set("n", "[d", function()
     vim.diagnostic.jump({ count = -1, float = false })
 end, { desc = "Diagnostic" })
@@ -128,7 +131,12 @@ vim.keymap.set("n", "[q", "<cmd>QFPrev<cr>", { desc = "Prev Quickfix" })
 vim.keymap.set("n", "[t", neotest.jump.prev, { desc = "Prev Test" })
 -- group "next"
 vim.keymap.set("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
-vim.keymap.set("n", "]c", "<cmd>Gitsign next_hunk<cr>", { desc = "Next Git hunk" })
+vim.keymap.set("n", "]c", function()
+    require("vcsigns.actions").hunc_next(0, vim.v.count1)
+end, { desc = "Go to next hunk" })
+vim.keymap.set("n", "]C", function()
+    require("vcsigns.actions").hunc_next(0, 9999)
+end, { desc = "Go to last hunk" })
 vim.keymap.set("n", "]d", function()
     vim.diagnostic.jump({ count = 1, float = false })
 end, { desc = "Diagnostic" })
@@ -147,7 +155,7 @@ vim.keymap.set("n", "<M-]>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buff
 vim.keymap.set("n", "<C-l>", "<cmd>nohl<cr>", { desc = "Clear highlight" })
 
 -- visual mode mappings with <leader>
-vim.keymap.set("v", "<leader>g", "", { desc = "Git" })
-vim.keymap.set("v", "<leader>gh", "", { desc = "Git/hunk" })
-vim.keymap.set("v", "<leader>ghr", "<cmd>Gitsigns reset_hunk<cr>", { desc = "Reset hunk" })
-vim.keymap.set("v", "<leader>ghs", "<cmd>Gitsigns stage_hunk<cr>", { desc = "Stage hunk" })
+vim.keymap.set("v", "<leader>v", "", { desc = "VCSigns" })
+vim.keymap.set("v", "<leader>vu", function()
+    require("vcsigns.actions").hunk_undo(0)
+end, { desc = "Undo hunks in range" })

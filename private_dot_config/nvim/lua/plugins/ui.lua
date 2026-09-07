@@ -135,18 +135,15 @@ return {
     },
     -- Explorer
     {
-        "nvim-neo-tree/neo-tree.nvim",
-        version = "*",
+        "stevearc/oil.nvim",
+        opts = {},
+        -- Optional dependencies
         dependencies = {
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
+            -- use nvim-web-devicon if you prefer
+            "nvim-mini/mini.icons",
         },
+        -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
         lazy = false,
-        -- @module "neo-tree"
-        -- @type neotree.Config?
-        opts = {
-            -- fill any relevant options here
-        },
     },
     -- Icons
     {

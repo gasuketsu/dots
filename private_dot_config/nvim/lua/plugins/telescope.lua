@@ -4,6 +4,7 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-telescope/telescope-ghq.nvim",
+            "zschreur/telescope-jj.nvim",
         },
         config = function()
             local actions = require("telescope.actions")
@@ -23,6 +24,7 @@ return {
             })
             require("telescope").load_extension("ghq")
             require("telescope").load_extension("aerial")
+            require("telescope").load_extension("jj")
         end,
     },
 }

@@ -4,6 +4,9 @@ local hc = require("nvim-highlight-colors")
 local notify = require("mini.notify")
 
 -- normal mode keymaps with <leader>
+-- group "explorer"
+vim.keymap.set("n", "<leader>-", "<cmd>Oil<cr>", { desc = "Open Oil Explorer" })
+
 -- group "toggle"
 vim.keymap.set("n", "<leader><space>", "", { desc = "Toggle" })
 vim.keymap.set("n", "<leader><space>L", function()
@@ -11,7 +14,6 @@ vim.keymap.set("n", "<leader><space>L", function()
 end, { desc = "CodeLens" })
 vim.keymap.set("n", "<leader><space>C", "<cmd>TSContextToggle<cr>", { desc = "TreeSitter context" })
 vim.keymap.set("n", "<leader><space>c", hc.toggle, { desc = "Highlight colors" })
-vim.keymap.set("n", "<leader><space>e", "<cmd>Neotree toggle<cr>", { desc = "File explorer" })
 vim.keymap.set("n", "<leader><space>g", "", { desc = "Toggle/Git" })
 vim.keymap.set("n", "<leader><space>gv", "<cmd>DiffviewToggleFiles<cr>", { desc = "DiffView file tree" })
 vim.keymap.set("n", "<leader><space>l", "<cmd>LLToggle!<cr>", { desc = "Loclist" })
@@ -23,6 +25,19 @@ vim.keymap.set("n", "<leader><space>t", "<cmd>ToggleTerm<cr>", { desc = "Termina
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Open diagnostic" })
 
 -- group "find"
+local builtin = require("telescope.builtin")
+local telescope = require("telescope")
+local vcs_picker = function(opts)
+    local jj_pick_status, jj_res = pcall(telescope.extensions.jj.files, opts)
+    if jj_pick_status then
+        return
+    end
+
+    local git_files_status, git_res = pcall(builtin.git_files, opts)
+    if not git_files_status then
+        error("Could not launch jj/git files: \n" .. jj_res .. "\n" .. git_res)
+    end
+end
 vim.keymap.set("n", "<leader>f", "", { desc = "Find" })
 vim.keymap.set("n", "<leader>fD", "<cmd>Telescope lsp_definitions<cr>", { desc = "LSP definitions" })
 vim.keymap.set("n", "<leader>fG", "<cmd>Telescope live_grep<cr>", { desc = "Live grep" })
@@ -30,12 +45,12 @@ vim.keymap.set("n", "<leader>fR", "<cmd>Telescope lsp_references<cr>", { desc = 
 vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Buffers" })
 vim.keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>", { desc = "Diagnostics" })
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Files" })
-vim.keymap.set("n", "<leader>fg", "<cmd>Telescope git_files<cr>", { desc = "Git files" })
 vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Help tags" })
 vim.keymap.set("n", "<leader>fn", notify.show_history, { desc = "Noice message history" })
 vim.keymap.set("n", "<leader>fp", "<cmd>Telescope project<cr>", { desc = "Project" })
 vim.keymap.set("n", "<leader>fr", "<cmd>Telescope ghq<cr>", { desc = "ghq repository" })
 vim.keymap.set("n", "<leader>fs", "<cmd>Telescope aerial<cr>", { desc = "Symbol in this buffer" })
+vim.keymap.set("n", "<leader>fv", vcs_picker, { desc = "jj/git files" })
 
 -- group "git"
 vim.keymap.set("n", "<leader>g", "", { desc = "Git" })

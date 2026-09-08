@@ -13,4 +13,4 @@ if ! echo $PATH | grep -q "$HOME/.local/bin"; then
 fi
 
 eval "$(zoxide init bash)"
-eval "$(herdr completion zsh)"
+eval "$(herdr completion bash)"

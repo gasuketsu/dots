@@ -15,6 +15,7 @@ fi
 
 eval "$(sheldon source)"
 eval "$(zoxide init zsh)"
+eval "$(herdr completion zsh)"
 
 if type fzf >/dev/null 2>&1; then
     source <(fzf --zsh)

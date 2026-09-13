@@ -7,3 +7,6 @@ host_cursor = "native"
 [theme]
 name = "kanagawa"
 auto_switch = false
+
+[keys]
+prefix = "ctrl+\\"

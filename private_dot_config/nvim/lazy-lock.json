@@ -47,7 +47,7 @@
   "plenary.nvim": { "branch": "master", "commit": "74b06c6c75e4eeb3108ec01852001636d85a932b" },
   "quicker.nvim": { "branch": "master", "commit": "4a6883cb13fe097a20a046eb55f6dffd239276e3" },
   "rooter.nvim": { "branch": "master", "commit": "e052796c241d244446e670f1216e73d8ab3e121f" },
-  "rustaceanvim": { "branch": "main", "commit": "18e5f45a12924f225f41e33c205f0f377b14f98b" },
+  "rustaceanvim": { "branch": "main", "commit": "3f8bc4d20b6e74474f7a86d230a5e4bd94a8b478" },
   "telescope-ghq.nvim": { "branch": "master", "commit": "2bd2e2d10f1a06fce9cce1e33ffe464c84ceb63b" },
   "telescope-jj.nvim": { "branch": "main", "commit": "0a2a928dc873d98cb8edddef1c9f7c63d4fbbf2d" },
   "telescope.nvim": { "branch": "master", "commit": "40aedd8a68c78a656a10a8d62d80c54af59420fb" },

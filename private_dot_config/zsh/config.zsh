@@ -16,13 +16,7 @@ fi
 eval "$(sheldon source)"
 eval "$(zoxide init zsh)"
 
-if type fzf >/dev/null 2>&1; then
-    source <(fzf --zsh)
-
-    if [ -f "$DEVBOX_PACKAGES_DIR/share/fzf-git-sh/fzf-git.sh" ]; then
-        source $DEVBOX_PACKAGES_DIR/share/fzf-git-sh/fzf-git.sh
-    fi
-fi
+source <(fzf --zsh)
 
 # aliases
 source ~/.config/zsh/aliases.zsh

@@ -50,12 +50,15 @@ return {
         "esmuellert/codediff.nvim",
         cmd = "CodeDiff",
     },
-    -- diff view
+    -- hunk.nvim
     {
-        "sindrets/diffview.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
+        "julienvincent/hunk.nvim",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+        },
+        cmd = { "DiffEditor" },
         config = function()
-            require("diffview").setup()
+            require("hunk").setup()
         end,
     },
 }

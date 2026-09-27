@@ -6,4 +6,4 @@ if [ -f "$JJCONFIG_FILE" ]; then
 fi
 
 mkdir -p "$HOME/.config/jj"
-echo -e "#:schema https://docs.jj-vcs.dev/latest/config-schema.json\n\n" >>"$JJCONFIG_FILE"
+touch "$JJCONFIG_FILE"
